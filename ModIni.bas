@@ -1,19 +1,19 @@
 Attribute VB_Name = "ModIni"
 Option Explicit
 
-Const APPLICATION As String = "MiPrograma"
-Public Const ROW_START_READ As String = "R_SR"
-Public Const COL_TYPE_ROW As String = "C_TR"
-Public Const COL_DATE As String = "C_D"
-Public Const COL_HOUR_INI As String = "C_HS"
-Public Const COL_HOUR_END As String = "C_HE"
-Public Const COL_HEDO As String = "C_HEDO"
-Public Const COL_HENO As String = "C_HENO"
-Public Const COL_HEDF As String = "C_HEDF"
-Public Const COL_HENF As String = "C_HENF"
-Public Const COL_RN As String = "C_RN"
-Public Const COL_RNF As String = "C_RNF"
-Public Const COL_RF As String = "C_RF"
+Const APPLICATION As String = "Quipux"
+Public Const K_ROW_START_READ As String = "R_SR"
+Public Const K_COL_TYPE_ROW As String = "C_TR"
+Public Const K_COL_DATE As String = "C_D"
+Public Const K_COL_HOUR_INI As String = "C_HS"
+Public Const K_COL_HOUR_END As String = "C_HE"
+Public Const K_COL_HEDO As String = "C_HEDO"
+Public Const K_COL_HENO As String = "C_HENO"
+Public Const K_COL_HEDF As String = "C_HEDF"
+Public Const K_COL_HENF As String = "C_HENF"
+Public Const K_COL_RN As String = "C_RN"
+Public Const K_COL_RNF As String = "C_RNF"
+Public Const K_COL_RF As String = "C_RF"
 
 'Función api que recupera un valor-dato de un archivo Ini
 Private Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" ( _

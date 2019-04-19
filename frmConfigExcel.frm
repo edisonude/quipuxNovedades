@@ -328,40 +328,40 @@ End Sub
 
 Private Sub btnSave_Click()
 If (isValidField(Me.tRowStartRead)) Then
-    Call ModIni.savePropertyFile(ModCalendar.calendarPath, ModIni.ROW_START_READ, Me.tRowStartRead.Text)
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, ModIni.K_ROW_START_READ, Me.tRowStartRead.Text)
 End If
 If (isValidField(Me.tColType)) Then
-    Call ModIni.savePropertyFile(ModCalendar.calendarPath, ModIni.COL_TYPE_ROW, Me.tColType.Text)
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, ModIni.K_COL_TYPE_ROW, Me.tColType.Text)
 End If
 If (isValidField(Me.tColDate)) Then
-    Call ModIni.savePropertyFile(ModCalendar.calendarPath, ModIni.COL_DATE, Me.tColDate.Text)
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, ModIni.K_COL_DATE, Me.tColDate.Text)
 End If
 If (isValidField(Me.tColHStart)) Then
-    Call ModIni.savePropertyFile(ModCalendar.calendarPath, ModIni.COL_HOUR_INI, Me.tColHStart.Text)
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, ModIni.K_COL_HOUR_INI, Me.tColHStart.Text)
 End If
 If (isValidField(Me.tColHEnd)) Then
-    Call ModIni.savePropertyFile(ModCalendar.calendarPath, ModIni.COL_HOUR_END, Me.tColHEnd.Text)
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, ModIni.K_COL_HOUR_END, Me.tColHEnd.Text)
 End If
 If (isValidField(Me.tColHedo)) Then
-    Call ModIni.savePropertyFile(ModCalendar.calendarPath, ModIni.COL_HEDO, Me.tColHedo.Text)
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, ModIni.K_COL_HEDO, Me.tColHedo.Text)
 End If
 If (isValidField(Me.tColHeno)) Then
-    Call ModIni.savePropertyFile(ModCalendar.calendarPath, ModIni.COL_HENO, Me.tColHeno.Text)
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, ModIni.K_COL_HENO, Me.tColHeno.Text)
 End If
 If (isValidField(Me.tColHedf)) Then
-    Call ModIni.savePropertyFile(ModCalendar.calendarPath, ModIni.COL_HEDF, Me.tColHedf.Text)
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, ModIni.K_COL_HEDF, Me.tColHedf.Text)
 End If
 If (isValidField(Me.tColHenf)) Then
-    Call ModIni.savePropertyFile(ModCalendar.calendarPath, ModIni.COL_HENF, Me.tColHenf.Text)
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, ModIni.K_COL_HENF, Me.tColHenf.Text)
 End If
 If (isValidField(Me.tColRn)) Then
-    Call ModIni.savePropertyFile(ModCalendar.calendarPath, ModIni.COL_RN, Me.tColRn.Text)
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, ModIni.K_COL_RN, Me.tColRn.Text)
 End If
 If (isValidField(Me.tColRnf)) Then
-    Call ModIni.savePropertyFile(ModCalendar.calendarPath, ModIni.COL_RNF, Me.tColRnf.Text)
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, ModIni.K_COL_RNF, Me.tColRnf.Text)
 End If
 If (isValidField(Me.tColRf)) Then
-    Call ModIni.savePropertyFile(ModCalendar.calendarPath, ModIni.COL_RF, Me.tColRf.Text)
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, ModIni.K_COL_RF, Me.tColRf.Text)
 End If
 
 MsgBox "Configuración Actualizada", vbInformation
@@ -376,16 +376,16 @@ End If
 End Function
 
 Private Sub Form_Load()
-Me.tRowStartRead = ModIni.readPropertyFile(ModCalendar.calendarPath, ModIni.ROW_START_READ, 9)
-Me.tColType = ModIni.readPropertyFile(ModCalendar.calendarPath, ModIni.COL_TYPE_ROW, 5)
-Me.tColDate = ModIni.readPropertyFile(ModCalendar.calendarPath, ModIni.COL_DATE, 6)
-Me.tColHStart = ModIni.readPropertyFile(ModCalendar.calendarPath, ModIni.COL_HOUR_INI, 7)
-Me.tColHEnd = ModIni.readPropertyFile(ModCalendar.calendarPath, ModIni.COL_HOUR_END, 8)
-Me.tColHedo = ModIni.readPropertyFile(ModCalendar.calendarPath, ModIni.COL_HEDO, 10)
-Me.tColHeno = ModIni.readPropertyFile(ModCalendar.calendarPath, ModIni.COL_HENO, 11)
-Me.tColHedf = ModIni.readPropertyFile(ModCalendar.calendarPath, ModIni.COL_HEDF, 12)
-Me.tColHenf = ModIni.readPropertyFile(ModCalendar.calendarPath, ModIni.COL_HENF, 13)
-Me.tColRn = ModIni.readPropertyFile(ModCalendar.calendarPath, ModIni.COL_RN, 14)
-Me.tColRnf = ModIni.readPropertyFile(ModCalendar.calendarPath, ModIni.COL_RNF, 15)
-Me.tColRf = ModIni.readPropertyFile(ModCalendar.calendarPath, ModIni.COL_RF, 16)
+Me.tRowStartRead = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_ROW_START_READ, 9)
+Me.tColType = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_TYPE_ROW, 5)
+Me.tColDate = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_DATE, 6)
+Me.tColHStart = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_HOUR_INI, 7)
+Me.tColHEnd = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_HOUR_END, 8)
+Me.tColHedo = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_HEDO, 10)
+Me.tColHeno = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_HENO, 11)
+Me.tColHedf = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_HEDF, 12)
+Me.tColHenf = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_HENF, 13)
+Me.tColRn = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_RN, 14)
+Me.tColRnf = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_RNF, 15)
+Me.tColRf = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_RF, 16)
 End Sub

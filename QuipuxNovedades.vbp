@@ -9,6 +9,7 @@ Form=frmProcess.frm
 Module=ModCalendar; ModCalendar.bas
 Module=ModExcel; ModExcel.bas
 Form=frmConfigExcel.frm
+Module=ModConfig; ModConfig.bas
 Startup="Sub Main"
 HelpFile=""
 Command32=""

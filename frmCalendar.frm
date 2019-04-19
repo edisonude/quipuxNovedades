@@ -456,7 +456,7 @@ holidaysLine = ""
         End Select
 
     Next
-    Call ModIni.savePropertyFile(ModCalendar.calendarPath, Me.tYear & i, holidaysLine)
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, Me.tYear & i, holidaysLine)
     Call ModCalendar.loadHolidays(Me.tYear)
 Next
 MsgBox "saved"
