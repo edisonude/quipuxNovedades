@@ -11,30 +11,14 @@ Begin VB.Form frmCalendar
    ScaleHeight     =   9585
    ScaleWidth      =   15765
    WindowState     =   2  'Maximized
-   Begin VB.CommandButton Command2 
-      Caption         =   "Command2"
-      Height          =   1095
-      Left            =   11400
-      TabIndex        =   17
-      Top             =   6120
-      Width           =   2295
-   End
    Begin VB.Frame Frame1 
       BackColor       =   &H00FFFFFF&
-      Height          =   3045
-      Left            =   10530
-      TabIndex        =   13
-      Top             =   375
-      Width           =   4710
-      Begin VB.CommandButton Command3 
-         Caption         =   "guardar"
-         Height          =   615
-         Left            =   3240
-         TabIndex        =   18
-         Top             =   2040
-         Width           =   735
-      End
-      Begin VB.TextBox tYear 
+      Height          =   2445
+      Left            =   10560
+      TabIndex        =   12
+      Top             =   240
+      Width           =   4110
+      Begin VB.ComboBox cmbYears 
          BeginProperty Font 
             Name            =   "Calibri"
             Size            =   12
@@ -44,15 +28,21 @@ Begin VB.Form frmCalendar
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00404040&
-         Height          =   435
-         Left            =   1665
-         MaxLength       =   4
-         TabIndex        =   16
-         Top             =   1050
-         Width           =   1290
+         Height          =   405
+         Left            =   2040
+         TabIndex        =   15
+         Top             =   960
+         Width           =   1335
+      End
+      Begin VB.Image btnSave 
+         Height          =   525
+         Left            =   840
+         Picture         =   "frmCalendar.frx":148842
+         Top             =   1680
+         Width           =   2115
       End
       Begin VB.Label Label2 
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Año actual"
          BeginProperty Font 
             Name            =   "Calibri"
@@ -63,14 +53,15 @@ Begin VB.Form frmCalendar
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H00404040&
+         ForeColor       =   &H00808080&
          Height          =   420
-         Left            =   180
-         TabIndex        =   15
-         Top             =   1050
+         Left            =   540
+         TabIndex        =   14
+         Top             =   930
          Width           =   1395
       End
       Begin VB.Label Label1 
+         BackColor       =   &H00FFFFFF&
          Caption         =   "CONFIGURACIÓN CALENDARIO"
          BeginProperty Font 
             Name            =   "Calibri"
@@ -84,18 +75,10 @@ Begin VB.Form frmCalendar
          ForeColor       =   &H00D58417&
          Height          =   420
          Left            =   180
-         TabIndex        =   14
+         TabIndex        =   13
          Top             =   300
-         Width           =   3960
+         Width           =   3720
       End
-   End
-   Begin VB.CommandButton Command1 
-      Caption         =   "Command1"
-      Height          =   1365
-      Left            =   11730
-      TabIndex        =   12
-      Top             =   3750
-      Width           =   1905
    End
    Begin VB.Label lOct 
       Alignment       =   2  'Center
@@ -343,90 +326,14 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub Command1_Click()
-Dim year As Integer
-Dim firstDay As Integer
-Dim lastDay As Integer
+Public yearCalendar As Integer
 
-
-year = 2020
-
-For i = 1 To 12
-    firstDay = Weekday(DateSerial(year, i, 1), vbMonday)
-    lastDay = day(DateSerial(year, i + 1, 0))
-
-    For d = 1 To lastDay
-        Select Case i
-            Case 1
-                Me.lEne(firstDay + d - 1) = d
-            Case 2
-                Me.lFeb(firstDay + d - 1) = d
-            Case 3
-                Me.lMar(firstDay + d - 1) = d
-            Case 4
-                Me.lAbr(firstDay + d - 1) = d
-            Case 5
-                Me.lMay(firstDay + d - 1) = d
-            Case 6
-                Me.lJun(firstDay + d - 1) = d
-            Case 7
-                Me.lJul(firstDay + d - 1) = d
-            Case 8
-                Me.lAgo(firstDay + d - 1) = d
-            Case 9
-                Me.lSep(firstDay + d - 1) = d
-            Case 10
-                Me.lOct(firstDay + d - 1) = d
-            Case 11
-                Me.lNov(firstDay + d - 1) = d
-            Case 12
-                Me.lDic(firstDay + d - 1) = d
-        End Select
-                
-        
-        
-    Next
-Next
-
-
-
-
-
-'Dim Fecha As Date
-'
-'    'Establecemos la fecha que queremos averiguar
-'    Fecha = CDate("01/01/2019")
-'
-'
-'
-'
-'    'Usamos la funcion DAteSerial para obtener el primero y el ultimo dia
-'    Primer = Weekday(DateSerial(year(Fecha), Month(Fecha) + 0, 1))
-'    Ultimo = Day(DateSerial(year(Fecha), Month(Fecha) + 1, 0))
-'
-'    MsgBox " Primer día : " & Primer & vbNewLine & _
-'           " Último día : " & Ultimo, vbInformation
-'
-'    Me.lEne(Primer).Caption = "F"
-'    Me.lEne(Ultimo).Caption = "U"
-'
-'    For i = 1 To Ultimo
-'        Me.lEne(Primer + i - 1) = i
-'    Next
-End Sub
-
-Private Sub Command2_Click()
-Dim d As Date
-d = DateSerial(2019, 2, 1)
-markDateAsHoliday (d)
-End Sub
-
-Private Sub Command3_Click()
+Private Sub btnSave_Click()
 Dim holidaysLine As String
 For i = 1 To 12
-    firstDay = Weekday(DateSerial(Me.tYear, i, 1), vbMonday)
-    lastDay = day(DateSerial(Me.tYear, i + 1, 0))
-holidaysLine = ""
+    firstDay = Weekday(DateSerial(Me.yearCalendar, i, 1), vbMonday)
+    lastDay = day(DateSerial(Me.yearCalendar, i + 1, 0))
+    holidaysLine = ""
     For d = 1 To 42
         Select Case i
             Case 1
@@ -456,10 +363,19 @@ holidaysLine = ""
         End Select
 
     Next
-    Call ModIni.savePropertyFile(ModConfig.calendarPath, Me.tYear & i, holidaysLine)
-    Call ModCalendar.loadHolidays(Me.tYear)
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, Me.yearCalendar & i, holidaysLine)
 Next
-MsgBox "saved"
+ModConfig.reloadHolidays
+MsgBox "¡Calendario actualizado!", vbInformation
+End Sub
+
+Private Sub cmbYears_Click()
+Me.yearCalendar = Me.cmbYears.Text
+Call loadCalendar
+End Sub
+
+Private Sub cmbYears_KeyPress(KeyAscii As Integer)
+KeyAscii = 0
 End Sub
 
 Private Sub addDayIfIsMarkAsHoliday(lday As Control, holidaysLine As String)
@@ -469,8 +385,50 @@ End If
 End Sub
 
 Private Sub Form_Load()
-Me.tYear = year(Now())
+Me.yearCalendar = ModConfig.currentYear
 
+Me.cmbYears.AddItem Me.yearCalendar - 1
+Me.cmbYears.AddItem Me.yearCalendar
+Me.cmbYears.AddItem Me.yearCalendar + 1
+Me.cmbYears.Text = Me.yearCalendar
+
+Call createLabelsCalendar
+Call loadCalendar
+End Sub
+
+Private Sub loadCalendar()
+Call clearCalendar
+Call loadCalendarDays
+Call loadHolidays
+End Sub
+
+Private Sub clearCalendar()
+For j = 0 To 5
+    For i = 0 To 6
+        pos = j * 7 + i + 1
+        Call clearLabelCalendar(lEne(pos))
+        Call clearLabelCalendar(lFeb(pos))
+        Call clearLabelCalendar(lMar(pos))
+        Call clearLabelCalendar(lAbr(pos))
+        Call clearLabelCalendar(lMay(pos))
+        Call clearLabelCalendar(lJun(pos))
+        Call clearLabelCalendar(lJul(pos))
+        Call clearLabelCalendar(lAgo(pos))
+        Call clearLabelCalendar(lSep(pos))
+        Call clearLabelCalendar(lOct(pos))
+        Call clearLabelCalendar(lNov(pos))
+        Call clearLabelCalendar(lDic(pos))
+    Next
+Next
+End Sub
+
+Private Sub clearLabelCalendar(label As label)
+label.Caption = ""
+label.ForeColor = &H404040
+label.FontBold = False
+End Sub
+
+Private Sub createLabelsCalendar()
 Dim pos As Integer
 Dim alto As Integer
 Dim m As Integer
@@ -545,19 +503,15 @@ For j = 0 To 5
         lDic(pos).Top = lDic(0).Top + ((lDic(0).Height + 32) * j)
     Next
 Next
-
-Call loadCaelandarDays
-Call loadHolidays
 End Sub
 
-Private Function loadCaelandarDays()
+Private Function loadCalendarDays()
 Dim firstDay As Integer
 Dim lastDay As Integer
 
 For i = 1 To 12
-    firstDay = Weekday(DateSerial(Me.tYear, i, 1), vbMonday)
-    lastDay = day(DateSerial(Me.tYear, i + 1, 0))
-
+    firstDay = Weekday(DateSerial(Me.yearCalendar, i, 1), vbMonday)
+    lastDay = day(DateSerial(Me.yearCalendar, i + 1, 0))
     For d = 1 To lastDay
         Select Case i
             Case 1
@@ -601,6 +555,10 @@ Dim firstDay As Integer
 Dim posHoliday As Integer
 
 m = Month(holidayDate)
+If (Not Me.yearCalendar = year(holidayDate)) Then
+    Exit Sub
+End If
+
 firstDay = Weekday(DateSerial(year(holidayDate), m, 1), vbMonday) - 1
 posHoliday = firstDay + day(holidayDate)
 
@@ -668,7 +626,6 @@ End Sub
 Private Sub lDic_Click(Index As Integer)
 Call checkHoliday(lDic(Index))
 End Sub
-
 
 Private Function checkHoliday(lday As Control)
 If (lday.ForeColor = vbRed) Then

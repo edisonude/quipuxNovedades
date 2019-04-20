@@ -23,8 +23,7 @@ Public HOUR_END_D As String
 Sub main()
 calendarPath = App.Path & "\config.ini"
 currentYear = year(Now)
-Call ModCalendar.loadHolidays(currentYear - 1)
-Call ModCalendar.loadHolidays(currentYear)
+Call reloadHolidays
 
 Call loadExcelConfig
 
@@ -33,6 +32,13 @@ HOUR_END_D = "21:00:00"
 
 frmProcess.Show
 
+End Sub
+
+Public Sub reloadHolidays()
+ReDim holidays(0)
+Call ModCalendar.loadHolidays(currentYear - 1)
+Call ModCalendar.loadHolidays(currentYear)
+Call ModCalendar.loadHolidays(currentYear + 1)
 End Sub
 
 Public Function loadExcelConfig()

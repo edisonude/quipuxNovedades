@@ -299,19 +299,42 @@ Else
 End If
 End Sub
 Private Sub assignDiference(dif As Integer, isDiurnal As Boolean, dateStart As Date, dateEnd As Date)
+If (Not isDiurnal) Then
+    If (day(dateStart) <> day(dateEnd)) Then
+        Dim difD1 As Integer
+        Dim difD2 As Integer
+        
+        difD1 = DateDiff("n", dateStart, getNextDay(dateStart))
+        If (difD1 < dif) Then
+            difD2 = dif - difD1
+            Call assignDif(difD1, isDiurnal, dateStart)
+            Call assignDif(difD2, isDiurnal, dateEnd)
+            Exit Sub
+        End If
+    End If
+End If
+Call assignDif(dif, isDiurnal, dateStart)
+End Sub
+
+Private Function assignDif(dif As Integer, isDiurnal As Boolean, dateAsign As Date) As Date
 If (isDiurnal) Then
-    If (ModCalendar.existHoliday(dateStart)) Then
+    If (ModCalendar.existHoliday(dateAsign)) Then
         hedf = hedf + dif
     Else
         hedo = hedo + dif
     End If
 Else
-    heno = heno + dif
-    If (day(dateStart) <> day(dateEnd)) Then
-        'MsgBox "diferentes"
+    If (ModCalendar.existHoliday(dateAsign)) Then
+        henf = henf + dif
+    Else
+        heno = heno + dif
     End If
 End If
-End Sub
+End Function
+
+Private Function getNextDay(d As Date) As Date
+getNextDay = Format(DateAdd("d", 1, d), "dd/MM/yyyy 00:00:00")
+End Function
 
 Private Function getDateStartDiurnal(d As Date) As Date
 getDateStartDiurnal = Format(d, "dd/MM/yyyy " & ModConfig.HOUR_START_D)
@@ -347,7 +370,7 @@ End If
 End Function
 
 Private Sub Command1_Click()
-ModCalendar.getHolidaysNumberForYear (Me.lYear)
+'ModCalendar.getHolidaysNumberForYear (Me.lYear)
 frmCalendar.Show
 End Sub
 
