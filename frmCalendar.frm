@@ -1,16 +1,19 @@
 VERSION 5.00
 Begin VB.Form frmCalendar 
    BackColor       =   &H00FFFFFF&
-   Caption         =   "Form2"
-   ClientHeight    =   9585
-   ClientLeft      =   435
-   ClientTop       =   465
-   ClientWidth     =   15765
+   BorderStyle     =   1  'Fixed Single
+   Caption         =   "Configuración del calendario"
+   ClientHeight    =   10125
+   ClientLeft      =   360
+   ClientTop       =   390
+   ClientWidth     =   15045
    LinkTopic       =   "Form2"
+   MaxButton       =   0   'False
+   MinButton       =   0   'False
    Picture         =   "frmCalendar.frx":0000
-   ScaleHeight     =   9585
-   ScaleWidth      =   15765
-   WindowState     =   2  'Maximized
+   ScaleHeight     =   10125
+   ScaleWidth      =   15045
+   StartUpPosition =   1  'CenterOwner
    Begin VB.Frame Frame1 
       BackColor       =   &H00FFFFFF&
       Height          =   2445
@@ -37,7 +40,7 @@ Begin VB.Form frmCalendar
       Begin VB.Image btnSave 
          Height          =   525
          Left            =   840
-         Picture         =   "frmCalendar.frx":148842
+         Picture         =   "frmCalendar.frx":1527CE
          Top             =   1680
          Width           =   2115
       End
@@ -327,6 +330,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Public yearCalendar As Integer
+Public frmParent As Form
 
 Private Sub btnSave_Click()
 Dim holidaysLine As String
@@ -367,6 +371,7 @@ For i = 1 To 12
 Next
 ModConfig.reloadHolidays
 MsgBox "¡Calendario actualizado!", vbInformation
+Me.frmParent.updateHolidays
 End Sub
 
 Private Sub cmbYears_Click()
@@ -489,18 +494,18 @@ For j = 0 To 5
             lNov(pos).Left = lNov(pos - 1).Width + lNov(pos - 1).Left + 120
             lDic(pos).Left = lDic(pos - 1).Width + lDic(pos - 1).Left + 120
         End If
-        lEne(pos).Top = lEne(0).Top + ((lEne(0).Height + 32) * j)
-        lFeb(pos).Top = lFeb(0).Top + ((lFeb(0).Height + 32) * j)
-        lMar(pos).Top = lMar(0).Top + ((lMar(0).Height + 32) * j)
-        lAbr(pos).Top = lAbr(0).Top + ((lAbr(0).Height + 32) * j)
-        lMay(pos).Top = lMay(0).Top + ((lMay(0).Height + 32) * j)
-        lJun(pos).Top = lJun(0).Top + ((lJun(0).Height + 32) * j)
-        lJul(pos).Top = lJul(0).Top + ((lJul(0).Height + 32) * j)
-        lAgo(pos).Top = lAgo(0).Top + ((lAgo(0).Height + 32) * j)
-        lSep(pos).Top = lSep(0).Top + ((lMar(0).Height + 32) * j)
-        lOct(pos).Top = lOct(0).Top + ((lOct(0).Height + 32) * j)
-        lNov(pos).Top = lNov(0).Top + ((lNov(0).Height + 32) * j)
-        lDic(pos).Top = lDic(0).Top + ((lDic(0).Height + 32) * j)
+        lEne(pos).Top = lEne(0).Top + ((lEne(0).Height + 31) * j)
+        lFeb(pos).Top = lFeb(0).Top + ((lFeb(0).Height + 31) * j)
+        lMar(pos).Top = lMar(0).Top + ((lMar(0).Height + 31) * j)
+        lAbr(pos).Top = lAbr(0).Top + ((lAbr(0).Height + 31) * j)
+        lMay(pos).Top = lMay(0).Top + ((lMay(0).Height + 31) * j)
+        lJun(pos).Top = lJun(0).Top + ((lJun(0).Height + 31) * j)
+        lJul(pos).Top = lJul(0).Top + ((lJul(0).Height + 31) * j)
+        lAgo(pos).Top = lAgo(0).Top + ((lAgo(0).Height + 31) * j)
+        lSep(pos).Top = lSep(0).Top + ((lMar(0).Height + 31) * j)
+        lOct(pos).Top = lOct(0).Top + ((lOct(0).Height + 31) * j)
+        lNov(pos).Top = lNov(0).Top + ((lNov(0).Height + 31) * j)
+        lDic(pos).Top = lDic(0).Top + ((lDic(0).Height + 31) * j)
     Next
 Next
 End Sub

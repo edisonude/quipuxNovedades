@@ -1,157 +1,164 @@
 VERSION 5.00
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form frmProcess 
    BackColor       =   &H00FFFFFF&
-   Caption         =   "Form2"
-   ClientHeight    =   8490
-   ClientLeft      =   120
-   ClientTop       =   465
+   BorderStyle     =   1  'Fixed Single
+   Caption         =   "Gestión de Novedades"
+   ClientHeight    =   6675
+   ClientLeft      =   45
+   ClientTop       =   390
    ClientWidth     =   9945
    LinkTopic       =   "Form2"
+   MaxButton       =   0   'False
+   MinButton       =   0   'False
    Picture         =   "frmProcess.frx":0000
-   ScaleHeight     =   8490
+   ScaleHeight     =   6675
    ScaleWidth      =   9945
    StartUpPosition =   2  'CenterScreen
-   Begin VB.CommandButton cmdProcess 
-      Caption         =   "PROCESAR"
-      Height          =   1935
-      Left            =   720
-      TabIndex        =   9
-      Top             =   960
-      Width           =   3375
+   Begin MSComDlg.CommonDialog excelDialog 
+      Left            =   0
+      Top             =   765
+      _ExtentX        =   847
+      _ExtentY        =   847
+      _Version        =   393216
+      DialogTitle     =   "Seleccione el archivo de novedades a procesar"
+      Filter          =   "Archivos Excel (xlsx)|*.xlsx|Archivos Excel (xls)|*.xls"
    End
-   Begin VB.CommandButton Command3 
-      Caption         =   "configurar excel"
-      Height          =   1335
-      Left            =   960
-      TabIndex        =   8
-      Top             =   5280
-      Width           =   1215
-   End
-   Begin VB.CommandButton Command2 
-      Caption         =   "hazlo todo"
-      Height          =   855
-      Left            =   2760
-      TabIndex        =   7
-      Top             =   3240
-      Width           =   3855
-   End
-   Begin VB.CommandButton Command1 
-      Caption         =   "Command1"
-      Height          =   975
-      Left            =   5040
-      TabIndex        =   6
-      Top             =   1680
-      Width           =   1815
-   End
-   Begin VB.Frame Frame1 
+   Begin VB.PictureBox picProcessing 
       BackColor       =   &H00FFFFFF&
-      Height          =   2205
+      BorderStyle     =   0  'None
+      Height          =   4800
+      Left            =   1560
+      Picture         =   "frmProcess.frx":1CB5A
+      ScaleHeight     =   4800
+      ScaleWidth      =   6300
+      TabIndex        =   4
+      Top             =   6480
+      Visible         =   0   'False
+      Width           =   6300
+   End
+   Begin VB.Image btnEnd 
+      Height          =   630
+      Left            =   2430
+      Picture         =   "frmProcess.frx":7EDB0
+      Top             =   5640
+      Width           =   4710
+   End
+   Begin VB.Label lHolidays 
+      Alignment       =   1  'Right Justify
+      BackStyle       =   0  'Transparent
+      Caption         =   "99"
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   11.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H001BE7E1&
+      Height          =   255
+      Left            =   3075
+      TabIndex        =   3
+      Top             =   4785
+      Width           =   300
+   End
+   Begin VB.Label lYear 
+      Alignment       =   1  'Right Justify
+      BackStyle       =   0  'Transparent
+      Caption         =   "2018"
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   11.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H001BE7E1&
+      Height          =   255
+      Left            =   2835
+      TabIndex        =   2
+      Top             =   4485
+      Width           =   540
+   End
+   Begin VB.Image btnDiurnalNocturnal 
+      Height          =   1065
       Left            =   5640
+      Picture         =   "frmProcess.frx":888D2
+      Top             =   4425
+      Width           =   1785
+   End
+   Begin VB.Image btnConfigExcel 
+      Height          =   1065
+      Left            =   3720
+      Picture         =   "frmProcess.frx":8ECEC
+      Top             =   4425
+      Width           =   1770
+   End
+   Begin VB.Image btnCalendar 
+      Height          =   1065
+      Left            =   1800
+      Picture         =   "frmProcess.frx":94FEA
+      Top             =   4425
+      Width           =   1770
+   End
+   Begin VB.Image Image4 
+      Height          =   375
+      Left            =   1560
+      Picture         =   "frmProcess.frx":9B2E8
+      Top             =   3825
+      Width           =   6000
+   End
+   Begin VB.Image btnProcess 
+      Height          =   630
+      Left            =   2430
+      Picture         =   "frmProcess.frx":A285A
+      Top             =   2880
+      Width           =   4695
+   End
+   Begin VB.Label lUpload 
+      BackStyle       =   0  'Transparent
+      Height          =   600
+      Left            =   7110
+      TabIndex        =   1
+      Top             =   1905
+      Width           =   660
+   End
+   Begin VB.Label lExcelFile 
+      BackColor       =   &H00FFFFFF&
+      Caption         =   "Seleccione el archivo de novedades"
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   14.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   -1  'True
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00808080&
+      Height          =   375
+      Left            =   2055
       TabIndex        =   0
-      Top             =   4440
-      Width           =   3885
-      Begin VB.Label Label4 
-         BackColor       =   &H00E0E0E0&
-         Caption         =   "Festivos"
-         BeginProperty Font 
-            Name            =   "Calibri"
-            Size            =   12
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00404040&
-         Height          =   420
-         Left            =   900
-         TabIndex        =   5
-         Top             =   1470
-         Width           =   1035
-      End
-      Begin VB.Label lHolidays 
-         BackColor       =   &H00E0E0E0&
-         Caption         =   "9999"
-         BeginProperty Font 
-            Name            =   "Calibri"
-            Size            =   14.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00A07430&
-         Height          =   420
-         Left            =   2145
-         TabIndex        =   4
-         Top             =   1440
-         Width           =   600
-      End
-      Begin VB.Line Line1 
-         BorderColor     =   &H00A07430&
-         X1              =   60
-         X2              =   3780
-         Y1              =   720
-         Y2              =   720
-      End
-      Begin VB.Label lYear 
-         BackColor       =   &H00E0E0E0&
-         Caption         =   "9999"
-         BeginProperty Font 
-            Name            =   "Calibri"
-            Size            =   14.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00A07430&
-         Height          =   420
-         Left            =   2145
-         TabIndex        =   3
-         Top             =   930
-         Width           =   600
-      End
-      Begin VB.Label Label1 
-         BackStyle       =   0  'Transparent
-         Caption         =   "CONFIGURACIÓN CALENDARIO"
-         BeginProperty Font 
-            Name            =   "Calibri"
-            Size            =   14.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00D58417&
-         Height          =   420
-         Left            =   60
-         TabIndex        =   2
-         Top             =   300
-         Width           =   3720
-      End
-      Begin VB.Label Label2 
-         BackColor       =   &H00E0E0E0&
-         Caption         =   "Año actual"
-         BeginProperty Font 
-            Name            =   "Calibri"
-            Size            =   12
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00404040&
-         Height          =   420
-         Left            =   900
-         TabIndex        =   1
-         Top             =   960
-         Width           =   1155
-      End
+      Top             =   2040
+      Width           =   4935
+   End
+   Begin VB.Image Image3 
+      Height          =   660
+      Left            =   1935
+      Picture         =   "frmProcess.frx":AC2D4
+      Top             =   1875
+      Width           =   5865
+   End
+   Begin VB.Image Image1 
+      Height          =   375
+      Left            =   1560
+      Picture         =   "frmProcess.frx":B8D36
+      Top             =   1185
+      Width           =   6000
    End
 End
 Attribute VB_Name = "frmProcess"
@@ -159,6 +166,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Public excelPath As String
 Public excelApp As Excel.APPLICATION
 Public workbook As Excel.workbook
 Public sheet As Excel.Worksheet
@@ -169,34 +177,38 @@ Public hedf As Integer
 Public henf As Integer
 
 Private Function loadExcel()
-Dim pathFile As String
-pathFile = "C:\git\quipuxNovedades\consolidado.xlsx"
 Set excelApp = New Excel.APPLICATION
-Set workbook = excelApp.Workbooks.Open(FileName:=pathFile)
+Set workbook = excelApp.Workbooks.Open(FileName:=excelPath)
 Set sheet = workbook.Sheets(1)
 End Function
 
-Private Sub cmdProcess_Click()
+Private Sub btnCalendar_Click()
+frmCalendar.Show
+Set frmCalendar.frmParent = Me
+End Sub
+
+Private Sub btnConfigExcel_Click()
+frmConfigExcel.Show
+End Sub
+
+Private Sub btnDiurnalNocturnal_Click()
+frmDiurnalNocturnal.Show
+End Sub
+
+Private Sub btnEnd_Click()
+End
+End Sub
+
+Private Sub btnProcess_Click()
 On Error GoTo closeResources
 
+If (Me.excelPath = "") Then
+    MsgBox "Debe seleccionar el archivo de novedades que quiere procesar", vbCritical
+    Exit Sub
+End If
 
-sngTime = Timer
-
-
-
-
-
+Call showProcessing
 Call loadExcel
-
-'Dim pathFile As String
-'Dim excelApp As Excel.APPLICATION
-'Dim workbook As Excel.workbook
-'Dim sheet As Excel.Worksheet
-
-'pathFile = "C:\git\quipuxNovedades\consolidado.xlsx"
-'Set excelApp = New Excel.APPLICATION
-'Set workbook = excelApp.Workbooks.Open(FileName:="C:\git\quipuxNovedades\consolidado.xlsx")
-'Set sheet = workbook.Sheets(1)
 
 Dim hasMoreRows As Boolean
 Dim row As Integer
@@ -205,7 +217,6 @@ Dim rowsProcessed As Integer
 hasMoreRows = True
 row = ModConfig.ROW_START_READ
 rowsProcessed = 0
-'row = 1
 
 While hasMoreRows
     value = sheet.Cells(row, ModConfig.COL_TYPE_ROW)
@@ -277,25 +288,32 @@ Wend
 workbook.Save
 workbook.Close SaveChanges:=False
 
-sngTime = Timer - sngTime
+Call showProcessing
     
-MsgBox "procesados " & rowsProcessed & vbNewLine & "Tiempo == " & FormatNumber(sngTime, 3)
-'MsgBox "hedo " & Round(hedo / 60, 2) & vbNewLine & "heno " & Round(heno / 60, 2)
-
+MsgBox "Finalizó con éxito el procesamiento de las novedades." & vbNewLine & vbNewLine & _
+    "Se procesaron " & rowsProcessed & " regisros de novedades.", vbInformation
 closeResources:
 Call closeResources
 End Sub
 
+Private Sub showProcessing()
+If (Me.picProcessing.Visible = False) Then
+    Me.picProcessing.Visible = True
+    Me.picProcessing.Top = 1680
+Else
+    Me.picProcessing.Visible = False
+End If
+End Sub
 Private Sub writeResults(row)
 If ("HORA EXTRA" = sheet.Cells(row, ModConfig.COL_TYPE_ROW)) Then
-    sheet.Cells(row, ModConfig.COL_HEDO) = Round(hedo / 60, 2)
-    sheet.Cells(row, ModConfig.COL_HENO) = Round(heno / 60, 2)
-    sheet.Cells(row, ModConfig.COL_HEDF) = Round(hedf / 60, 2)
-    sheet.Cells(row, ModConfig.COL_HENF) = Round(henf / 60, 2)
+    sheet.Cells(row, ModConfig.COL_HEDO) = IIf(hedo > 0, Round(hedo / 60, 2), "")
+    sheet.Cells(row, ModConfig.COL_HENO) = IIf(heno > 0, Round(heno / 60, 2), "")
+    sheet.Cells(row, ModConfig.COL_HEDF) = IIf(hedf > 0, Round(hedf / 60, 2), "")
+    sheet.Cells(row, ModConfig.COL_HENF) = IIf(henf > 0, Round(henf / 60, 2), "")
 Else
-    sheet.Cells(row, ModConfig.COL_RN) = Round(heno / 60, 2)
-    sheet.Cells(row, ModConfig.COL_RF) = Round(hedf / 60, 2)
-    sheet.Cells(row, ModConfig.COL_RNF) = Round(henf / 60, 2)
+    sheet.Cells(row, ModConfig.COL_RN) = IIf(heno > 0, Round(heno / 60, 2), "")
+    sheet.Cells(row, ModConfig.COL_RF) = IIf(hedf > 0, Round(hedf / 60, 2), "")
+    sheet.Cells(row, ModConfig.COL_RNF) = IIf(henf > 0, Round(henf / 60, 2), "")
 End If
 End Sub
 Private Sub assignDiference(dif As Integer, isDiurnal As Boolean, dateStart As Date, dateEnd As Date)
@@ -369,118 +387,22 @@ If Not excelApp Is Nothing Then
 End If
 End Function
 
-Private Sub Command1_Click()
-'ModCalendar.getHolidaysNumberForYear (Me.lYear)
-frmCalendar.Show
+Private Sub Form_Load()
+Me.lYear = ModConfig.currentYear
+Me.lHolidays = ModCalendar.getHolidaysNumberForYear(ModConfig.currentYear)
 End Sub
 
-
-Private Sub Command2_Click()
-
-    Dim diferencia As Double
-    Dim hedo As Double
-    Dim heno As Double
-    Dim colBase As Integer
-
-    Dim oApp As Excel.APPLICATION
-    Dim oWB As Excel.workbook
-    
-    'Create an Excel instalce.
-    Set oApp = New Excel.APPLICATION
-    'Open the desired workbook
-    Set oWB = oApp.Workbooks.Open(FileName:="C:\git\quipux\consolidado.xlsx")
-    'Do any modifications to the workbook.
-    '...
-    
-    Dim b As Excel.Worksheet
-    Set b = oWB.Sheets(1)
-    Dim continuar As Boolean
-    continuar = True
-    Dim fila As Integer
-    Dim value As String
-    Dim cuenta As Integer
-    fila = 9
-    While continuar
-        value = b.Cells(fila, 1)
-        If (value = "") Then
-            continuar = False
-        Else
-            If (b.Cells(fila, 5) = "HORA EXTRA") Or (b.Cells(fila, 5) = "RECARGO NOCTURNO") Then
-                diferencia = 0
-                hedo = 0
-                heno = 0
-
-                Dim fechaIni As Date
-                fechaIni = CDate(b.Cells(fila, 6)) & " " & CDate(b.Cells(fila, 7))
-                
-                Dim fechaFin As Date
-                Dim totalInMin As Double
-                totalInMin = CDate(b.Cells(fila, 9)) * 60 * 24
-                fechaFin = DateAdd("n", totalInMin, fechaIni)
-                
-                fechaFin = CDate(Format(fechaFin, "dd/MM/yyyy")) & " " & CDate(b.Cells(fila, 8))
-                
-                
-                diferencia = DateDiff("n", fechaIni, fechaFin)
-'                MsgBox "fechaIni " & fechaIni
-'                MsgBox "fechaFin " & fechaFin
-                
-                Dim dateIniDiurno As Date
-                dateIniDiurno = Format(fechaIni, "dd/MM/yyyy 06:00:00")
-                
-                Dim dateIniNocturno As Date
-                dateIniNocturno = Format(fechaIni, "dd/MM/yyyy 21:00:00")
-                
-                Dim dateFinDiurno As Date
-                dateFinDiurno = Format(fechaFin, "dd/MM/yyyy 06:00:00")
-                
-                Dim dateFinNocturno As Date
-                dateFinNocturno = Format(fechaFin, "dd/MM/yyyy 21:00:00")
-                
-                If (fechaIni >= dateIniDiurno And fechaIni <= dateIniNocturno) Then
-                    hedo = DateDiff("n", fechaIni, dateIniNocturno)
-                    If (diferencia < hedo) Then
-                        hedo = diferencia
-                    Else
-                        heno = DateDiff("n", dateIniNocturno, fechaFin)
-                    End If
-                Else
-                    heno = DateDiff("n", fechaIni, dateFinDiurno)
-                    If (diferencia < heno Or heno < 0) Then
-                        heno = diferencia
-                    Else
-                        hedo = DateDiff("n", dateFinDiurno, fechaFin)
-                    End If
-                End If
-                
-                hedo = Round(hedo / 60, 2)
-                heno = Round(heno / 60, 2)
-                
-                If (b.Cells(fila, 5) = "HORA EXTRA") Then
-                    b.Cells(fila, 10) = hedo
-                    b.Cells(fila, 11) = heno
-                Else
-                    b.Cells(fila, 14) = heno
-                End If
-                
-                fila = fila + 1
-                cuenta = cuenta + 1
-            End If
-        End If
-    Wend
-
-    'Save the xls file
-    ' oWB.SaveAs FileName:="C:\git\quipux\Libro.xlsx"
-    oWB.Save
-    'close and clean up resources
-    oWB.Close SaveChanges:=False
-    Set oWB = Nothing
-    oApp.Quit
-    Set oApp = Nothing
-    
-    MsgBox "end"
+Public Sub updateHolidays()
+Me.lHolidays = ModCalendar.getHolidaysNumberForYear(ModConfig.currentYear)
 End Sub
 
-Private Sub Command3_Click()
-frmConfigExcel.Show
+Private Sub lUpload_Click()
+excelDialog.ShowOpen
+If excelDialog.FileName <> "" Then
+    excelPath = excelDialog.FileName
+    Me.lExcelFile = excelDialog.FileTitle
+Else
+    excelPath = ""
+    Me.lExcelFile = "Seleccione el archivo de novedades"
+End If
 End Sub

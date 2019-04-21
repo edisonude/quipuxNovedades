@@ -1,16 +1,18 @@
 VERSION 5.00
 Begin VB.Form frmConfigExcel 
    BackColor       =   &H00FFFFFF&
-   Caption         =   "Form2"
-   ClientHeight    =   8775
-   ClientLeft      =   120
-   ClientTop       =   465
-   ClientWidth     =   20250
+   BorderStyle     =   1  'Fixed Single
+   Caption         =   "Configuración plantilla Excel"
+   ClientHeight    =   8100
+   ClientLeft      =   45
+   ClientTop       =   390
+   ClientWidth     =   19785
    LinkTopic       =   "Form2"
-   ScaleHeight     =   8775
-   ScaleWidth      =   20250
-   StartUpPosition =   3  'Windows Default
-   WindowState     =   2  'Maximized
+   MaxButton       =   0   'False
+   MinButton       =   0   'False
+   ScaleHeight     =   8100
+   ScaleWidth      =   19785
+   StartUpPosition =   2  'CenterScreen
    Begin VB.TextBox tColRf 
       Alignment       =   2  'Center
       Appearance      =   0  'Flat

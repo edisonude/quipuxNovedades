@@ -24,14 +24,11 @@ Sub main()
 calendarPath = App.Path & "\config.ini"
 currentYear = year(Now)
 Call reloadHolidays
-
 Call loadExcelConfig
 
-HOUR_START_D = "06:00:00"
-HOUR_END_D = "21:00:00"
-
+HOUR_START_D = ModIni.readPropertyFile(calendarPath, ModIni.K_HOUR_START_D, "06:00:00")
+HOUR_END_D = ModIni.readPropertyFile(calendarPath, ModIni.K_HOUR_END_D, "21:00:00")
 frmProcess.Show
-
 End Sub
 
 Public Sub reloadHolidays()

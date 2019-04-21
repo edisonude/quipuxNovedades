@@ -37,7 +37,7 @@ End Function
 
 Public Function existHoliday(holidayDate As Date) As Boolean
 On Error GoTo out
-For d = 0 To UBound(holidays)
+For d = 1 To UBound(holidays)
     If (holidays(d) = Format(holidayDate, "dd/mm/yyyy")) Then
         existHoliday = True
         Exit Function
@@ -51,7 +51,7 @@ If Err.Number = 9 Then
 End If
 End Function
 
-Public Function getHolidaysNumberForYear(year As Integer)
+Public Function getHolidaysNumberForYear(year)
 Dim holidays As String
 Dim holidaysByMonth() As String
 Dim countHolidays As Integer
@@ -64,7 +64,7 @@ For m = 1 To 12
         End If
     Next
 Next
-MsgBox countHolidays
+getHolidaysNumberForYear = countHolidays
 End Function
 
 Private Function isValidDay(day As String) As Boolean

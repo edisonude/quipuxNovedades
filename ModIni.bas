@@ -14,6 +14,8 @@ Public Const K_COL_HENF As String = "C_HENF"
 Public Const K_COL_RN As String = "C_RN"
 Public Const K_COL_RNF As String = "C_RNF"
 Public Const K_COL_RF As String = "C_RF"
+Public Const K_HOUR_START_D  As String = "HSD"
+Public Const K_HOUR_END_D As String = "HED"
 
 'Función api que recupera un valor-dato de un archivo Ini
 Private Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" ( _
