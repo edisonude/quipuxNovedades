@@ -266,6 +266,28 @@ Begin VB.Form frmConfigExcel
       TabIndex        =   0
       Top             =   1560
       Width           =   19095
+      Begin VB.TextBox tColTotal 
+         Alignment       =   2  'Center
+         Appearance      =   0  'Flat
+         BackColor       =   &H001BE7E1&
+         BorderStyle     =   0  'None
+         BeginProperty Font 
+            Name            =   "Calibri"
+            Size            =   14.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00004040&
+         Height          =   360
+         Left            =   10095
+         TabIndex        =   13
+         Text            =   "9"
+         Top             =   1500
+         Width           =   510
+      End
       Begin VB.TextBox tRowStartRead 
          Alignment       =   2  'Center
          Appearance      =   0  'Flat
@@ -365,7 +387,11 @@ End If
 If (isValidField(Me.tColRf)) Then
     Call ModIni.savePropertyFile(ModConfig.calendarPath, ModIni.K_COL_RF, Me.tColRf.Text)
 End If
+If (isValidField(Me.tColTotal)) Then
+    Call ModIni.savePropertyFile(ModConfig.calendarPath, ModIni.K_COL_TOT, Me.tColTotal.Text)
+End If
 
+Call ModConfig.loadExcelConfig
 MsgBox "Configuración Actualizada", vbInformation
 End Sub
 
@@ -381,6 +407,7 @@ Private Sub Form_Load()
 Me.tRowStartRead = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_ROW_START_READ, 9)
 Me.tColType = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_TYPE_ROW, 5)
 Me.tColDate = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_DATE, 6)
+Me.tColTotal = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_TOT, 9)
 Me.tColHStart = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_HOUR_INI, 7)
 Me.tColHEnd = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_HOUR_END, 8)
 Me.tColHedo = ModIni.readPropertyFile(ModConfig.calendarPath, ModIni.K_COL_HEDO, 10)

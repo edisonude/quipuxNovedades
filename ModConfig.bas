@@ -9,6 +9,7 @@ Public COL_TYPE_ROW As Integer
 Public COL_DATE As Integer
 Public COL_HOUR_INI As Integer
 Public COL_HOUR_END As Integer
+Public COL_TOT As Integer
 Public COL_HEDO As Integer
 Public COL_HENO As Integer
 Public COL_HEDF As Integer
@@ -42,6 +43,7 @@ Public Function loadExcelConfig()
 ROW_START_READ = ModIni.readPropertyFile(calendarPath, ModIni.K_ROW_START_READ, 9)
 COL_TYPE_ROW = ModIni.readPropertyFile(calendarPath, ModIni.K_COL_TYPE_ROW, 5)
 COL_DATE = ModIni.readPropertyFile(calendarPath, ModIni.K_COL_DATE, 6)
+COL_TOT = ModIni.readPropertyFile(calendarPath, ModIni.K_COL_TOT, 9)
 COL_HOUR_INI = ModIni.readPropertyFile(calendarPath, ModIni.K_COL_HOUR_INI, 7)
 COL_HOUR_END = ModIni.readPropertyFile(calendarPath, ModIni.K_COL_HOUR_END, 8)
 COL_HEDO = ModIni.readPropertyFile(calendarPath, ModIni.K_COL_HEDO, 10)

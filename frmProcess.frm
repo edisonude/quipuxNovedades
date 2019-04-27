@@ -37,6 +37,15 @@ Begin VB.Form frmProcess
       Visible         =   0   'False
       Width           =   6300
    End
+   Begin VB.Label Label1 
+      BackColor       =   &H000080FF&
+      Caption         =   "Label1"
+      Height          =   900
+      Left            =   9075
+      TabIndex        =   5
+      Top             =   3120
+      Width           =   225
+   End
    Begin VB.Image btnEnd 
       Height          =   630
       Left            =   2430
@@ -171,6 +180,7 @@ Public excelApp As Excel.APPLICATION
 Public workbook As Excel.workbook
 Public sheet As Excel.Worksheet
 
+Public totMins As Integer
 Public hedo As Integer
 Public heno As Integer
 Public hedf As Integer
@@ -219,8 +229,8 @@ row = ModConfig.ROW_START_READ
 rowsProcessed = 0
 
 While hasMoreRows
-    value = sheet.Cells(row, ModConfig.COL_TYPE_ROW)
-    If (value = "") Then
+    Value = sheet.Cells(row, ModConfig.COL_TYPE_ROW)
+    If (Value = "") Then
         hasMoreRows = False
     ElseIf (isTypeForProcess(row)) Then
         Dim dateStart As Date
@@ -243,6 +253,7 @@ While hasMoreRows
         
         dateReference = dateStart
         difGeneral = DateDiff("n", dateReference, dateEnd)
+        totMins = difGeneral
 
         While difGeneral > 0
             dateStartDiurnal = getDateStartDiurnal(dateReference)
@@ -304,18 +315,42 @@ Else
     Me.picProcessing.Visible = False
 End If
 End Sub
+
 Private Sub writeResults(row)
+Dim totalToReport As Integer
 If ("HORA EXTRA" = sheet.Cells(row, ModConfig.COL_TYPE_ROW)) Then
     sheet.Cells(row, ModConfig.COL_HEDO) = IIf(hedo > 0, Round(hedo / 60, 2), "")
     sheet.Cells(row, ModConfig.COL_HENO) = IIf(heno > 0, Round(heno / 60, 2), "")
     sheet.Cells(row, ModConfig.COL_HEDF) = IIf(hedf > 0, Round(hedf / 60, 2), "")
     sheet.Cells(row, ModConfig.COL_HENF) = IIf(henf > 0, Round(henf / 60, 2), "")
+    totalToReport = hedo + heno + hedf + henf
 Else
     sheet.Cells(row, ModConfig.COL_RN) = IIf(heno > 0, Round(heno / 60, 2), "")
     sheet.Cells(row, ModConfig.COL_RF) = IIf(hedf > 0, Round(hedf / 60, 2), "")
     sheet.Cells(row, ModConfig.COL_RNF) = IIf(henf > 0, Round(henf / 60, 2), "")
+    totalToReport = heno + hedf + henf
+End If
+
+If (totMins <> totalToReport) Then
+    Call markCheckWithError(row, ModConfig.COL_TYPE_ROW, "El total de horas reportadas no puedieron ser clasificadas en su totalidad según su tipo")
+End If
+
+Dim difMinReported As Integer
+difMinReported = CDate(sheet.Cells(row, ModConfig.COL_TOT)) * 1440
+If difMinReported <> totMins Then
+    Call markCheckWithError(row, ModConfig.COL_TOT, "El total de horas reportadas no coinciden con la diferencia de las fechas reportadas")
 End If
 End Sub
+
+Private Sub markCheckWithError(row, col, message)
+sheet.Cells(row, col).Interior.Color = &H80FF&
+sheet.Cells(row, col).ClearComments
+sheet.Cells(row, col).AddComment message
+
+sheet.Cells(row, col).Comment.Shape.ScaleHeight 2.26, msoFalse, msoScaleFromTopLeft
+sheet.Cells(row, col).Comment.Shape.ScaleWidth 5.87, msoFalse, msoScaleFromTopLeft
+End Sub
+
 Private Sub assignDiference(dif As Integer, isDiurnal As Boolean, dateStart As Date, dateEnd As Date)
 If (Not isDiurnal) Then
     If (day(dateStart) <> day(dateEnd)) Then
