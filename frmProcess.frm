@@ -37,15 +37,6 @@ Begin VB.Form frmProcess
       Visible         =   0   'False
       Width           =   6300
    End
-   Begin VB.Label Label1 
-      BackColor       =   &H000080FF&
-      Caption         =   "Label1"
-      Height          =   900
-      Left            =   9075
-      TabIndex        =   5
-      Top             =   3120
-      Width           =   225
-   End
    Begin VB.Image btnEnd 
       Height          =   630
       Left            =   2430
