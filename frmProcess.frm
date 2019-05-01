@@ -8,10 +8,11 @@ Begin VB.Form frmProcess
    ClientLeft      =   45
    ClientTop       =   390
    ClientWidth     =   9945
+   Icon            =   "frmProcess.frx":0000
    LinkTopic       =   "Form2"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   Picture         =   "frmProcess.frx":0000
+   Picture         =   "frmProcess.frx":08CA
    ScaleHeight     =   6675
    ScaleWidth      =   9945
    StartUpPosition =   2  'CenterScreen
@@ -29,7 +30,7 @@ Begin VB.Form frmProcess
       BorderStyle     =   0  'None
       Height          =   4800
       Left            =   1560
-      Picture         =   "frmProcess.frx":1CB5A
+      Picture         =   "frmProcess.frx":1D424
       ScaleHeight     =   4800
       ScaleWidth      =   6300
       TabIndex        =   4
@@ -40,7 +41,7 @@ Begin VB.Form frmProcess
    Begin VB.Image btnEnd 
       Height          =   630
       Left            =   2430
-      Picture         =   "frmProcess.frx":7EDB0
+      Picture         =   "frmProcess.frx":7F67A
       Top             =   5640
       Width           =   4710
    End
@@ -87,35 +88,35 @@ Begin VB.Form frmProcess
    Begin VB.Image btnDiurnalNocturnal 
       Height          =   1065
       Left            =   5640
-      Picture         =   "frmProcess.frx":888D2
+      Picture         =   "frmProcess.frx":8919C
       Top             =   4425
       Width           =   1785
    End
    Begin VB.Image btnConfigExcel 
       Height          =   1065
       Left            =   3720
-      Picture         =   "frmProcess.frx":8ECEC
+      Picture         =   "frmProcess.frx":8F5B6
       Top             =   4425
       Width           =   1770
    End
    Begin VB.Image btnCalendar 
       Height          =   1065
       Left            =   1800
-      Picture         =   "frmProcess.frx":94FEA
+      Picture         =   "frmProcess.frx":958B4
       Top             =   4425
       Width           =   1770
    End
    Begin VB.Image Image4 
       Height          =   375
       Left            =   1560
-      Picture         =   "frmProcess.frx":9B2E8
+      Picture         =   "frmProcess.frx":9BBB2
       Top             =   3825
       Width           =   6000
    End
    Begin VB.Image btnProcess 
       Height          =   630
       Left            =   2430
-      Picture         =   "frmProcess.frx":A285A
+      Picture         =   "frmProcess.frx":A3124
       Top             =   2880
       Width           =   4695
    End
@@ -149,14 +150,14 @@ Begin VB.Form frmProcess
    Begin VB.Image Image3 
       Height          =   660
       Left            =   1935
-      Picture         =   "frmProcess.frx":AC2D4
+      Picture         =   "frmProcess.frx":ACB9E
       Top             =   1875
       Width           =   5865
    End
    Begin VB.Image Image1 
       Height          =   375
       Left            =   1560
-      Picture         =   "frmProcess.frx":B8D36
+      Picture         =   "frmProcess.frx":B9600
       Top             =   1185
       Width           =   6000
    End
