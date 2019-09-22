@@ -7,16 +7,16 @@ Begin VB.Form frmProcess
    ClientHeight    =   6675
    ClientLeft      =   45
    ClientTop       =   390
-   ClientWidth     =   9945
+   ClientWidth     =   9825
    LinkTopic       =   "Form2"
    MaxButton       =   0   'False
    MinButton       =   0   'False
    Picture         =   "frmProcess.frx":0000
    ScaleHeight     =   6675
-   ScaleWidth      =   9945
+   ScaleWidth      =   9825
    StartUpPosition =   2  'CenterScreen
    Begin MSComDlg.CommonDialog excelDialog 
-      Left            =   0
+      Left            =   -240
       Top             =   765
       _ExtentX        =   847
       _ExtentY        =   847
@@ -28,19 +28,53 @@ Begin VB.Form frmProcess
       BackColor       =   &H00FFFFFF&
       BorderStyle     =   0  'None
       Height          =   4800
-      Left            =   1560
+      Left            =   960
       Picture         =   "frmProcess.frx":1CB5A
       ScaleHeight     =   4800
-      ScaleWidth      =   6300
+      ScaleWidth      =   8220
       TabIndex        =   4
-      Top             =   6480
+      Top             =   6360
       Visible         =   0   'False
-      Width           =   6300
+      Width           =   8220
+   End
+   Begin VB.Line Line1 
+      BorderColor     =   &H001BE7E1&
+      BorderWidth     =   4
+      Index           =   2
+      X1              =   6720
+      X2              =   6705
+      Y1              =   1620
+      Y2              =   3990
+   End
+   Begin VB.Line Line1 
+      BorderColor     =   &H001BE7E1&
+      BorderWidth     =   4
+      Index           =   1
+      X1              =   240
+      X2              =   9405
+      Y1              =   1605
+      Y2              =   1620
+   End
+   Begin VB.Line Line1 
+      BorderColor     =   &H001BE7E1&
+      BorderWidth     =   4
+      Index           =   0
+      X1              =   240
+      X2              =   9330
+      Y1              =   3990
+      Y2              =   3975
+   End
+   Begin VB.Image btnInforms 
+      Height          =   2280
+      Left            =   6720
+      Picture         =   "frmProcess.frx":9C734
+      Top             =   1755
+      Width           =   2640
    End
    Begin VB.Image btnEnd 
       Height          =   630
-      Left            =   2430
-      Picture         =   "frmProcess.frx":7EDB0
+      Left            =   2550
+      Picture         =   "frmProcess.frx":B00F6
       Top             =   5640
       Width           =   4710
    End
@@ -59,7 +93,7 @@ Begin VB.Form frmProcess
       EndProperty
       ForeColor       =   &H001BE7E1&
       Height          =   255
-      Left            =   3075
+      Left            =   3195
       TabIndex        =   3
       Top             =   4785
       Width           =   300
@@ -79,50 +113,50 @@ Begin VB.Form frmProcess
       EndProperty
       ForeColor       =   &H001BE7E1&
       Height          =   255
-      Left            =   2835
+      Left            =   2955
       TabIndex        =   2
       Top             =   4485
       Width           =   540
    End
    Begin VB.Image btnDiurnalNocturnal 
       Height          =   1065
-      Left            =   5640
-      Picture         =   "frmProcess.frx":888D2
+      Left            =   5760
+      Picture         =   "frmProcess.frx":B9C18
       Top             =   4425
       Width           =   1785
    End
    Begin VB.Image btnConfigExcel 
       Height          =   1065
-      Left            =   3720
-      Picture         =   "frmProcess.frx":8ECEC
+      Left            =   3840
+      Picture         =   "frmProcess.frx":C0032
       Top             =   4425
       Width           =   1770
    End
    Begin VB.Image btnCalendar 
       Height          =   1065
-      Left            =   1800
-      Picture         =   "frmProcess.frx":94FEA
+      Left            =   1920
+      Picture         =   "frmProcess.frx":C6330
       Top             =   4425
       Width           =   1770
    End
    Begin VB.Image Image4 
       Height          =   375
-      Left            =   1560
-      Picture         =   "frmProcess.frx":9B2E8
-      Top             =   3825
-      Width           =   6000
+      Left            =   240
+      Picture         =   "frmProcess.frx":CC62E
+      Top             =   3600
+      Width           =   2340
    End
    Begin VB.Image btnProcess 
       Height          =   630
-      Left            =   2430
-      Picture         =   "frmProcess.frx":A285A
+      Left            =   1110
+      Picture         =   "frmProcess.frx":CF424
       Top             =   2880
       Width           =   4695
    End
    Begin VB.Label lUpload 
       BackStyle       =   0  'Transparent
       Height          =   600
-      Left            =   7110
+      Left            =   5790
       TabIndex        =   1
       Top             =   1905
       Width           =   660
@@ -141,24 +175,24 @@ Begin VB.Form frmProcess
       EndProperty
       ForeColor       =   &H00808080&
       Height          =   375
-      Left            =   2055
+      Left            =   735
       TabIndex        =   0
       Top             =   2040
       Width           =   4935
    End
    Begin VB.Image Image3 
       Height          =   660
-      Left            =   1935
-      Picture         =   "frmProcess.frx":AC2D4
+      Left            =   615
+      Picture         =   "frmProcess.frx":D8E9E
       Top             =   1875
       Width           =   5865
    End
    Begin VB.Image Image1 
       Height          =   375
-      Left            =   1560
-      Picture         =   "frmProcess.frx":B8D36
-      Top             =   1185
-      Width           =   6000
+      Left            =   240
+      Picture         =   "frmProcess.frx":E5900
+      Top             =   1200
+      Width           =   4560
    End
 End
 Attribute VB_Name = "frmProcess"
@@ -176,6 +210,19 @@ Public hedo As Integer
 Public heno As Integer
 Public hedf As Integer
 Public henf As Integer
+
+Const MAX_HOURS_DAY = 2
+Const MAX_HOURS_WEEK = 12
+Const MAX_HOURS_MONTH = 48
+
+'Data columns
+Const INI_ROW = 2
+Const COL_CEDULA = 1
+Const COL_NOMBRE = 2
+Const COL_CARGO = 3
+Const COL_VICEPRE = 5
+Const COL_FECHA = 7
+Const COL_TOTHOR = 11
 
 Private Function loadExcel()
 Set excelApp = New Excel.APPLICATION
@@ -198,6 +245,71 @@ End Sub
 
 Private Sub btnEnd_Click()
 End
+End Sub
+
+Private Sub btnInforms_Click()
+On Error GoTo closeResources
+
+If (Me.excelPath = "") Then
+    MsgBox "Debe seleccionar el archivo de novedades que quiere procesar", vbCritical
+    Exit Sub
+End If
+
+Call showProcessing
+Call loadExcel
+
+Dim hasMoreRows As Boolean
+Dim row As Integer
+Dim rowsProcessed As Integer
+
+hasMoreRows = True
+row = INI_ROW
+rowsProcessed = 0
+
+Dim dict As Dictionary
+Set dict = New Dictionary
+
+Dim cedula As String
+Dim he As Double
+Dim infoEmpleado As CEntryReport
+
+While hasMoreRows
+    cedula = sheet.Cells(row, COL_CEDULA)
+    If (cedula = "") Then
+        hasMoreRows = False
+    Else
+        he = sheet.Cells(row, COL_TOTHOR)
+        If dict.Exists(cedula) Then
+            Set infoEmpleado = dict.Item(cedula)
+            infoEmpleado.totalHoras = infoEmpleado.totalHoras + he
+            Set dict.Item(cedula) = infoEmpleado
+        Else
+            Set infoEmpleado = New CEntryReport
+            infoEmpleado.cedula = cedula
+            infoEmpleado.nombre = sheet.Cells(row, COL_NOMBRE)
+            infoEmpleado.cargo = sheet.Cells(row, COL_CARGO)
+            infoEmpleado.vicepresidencia = sheet.Cells(row, COL_VICEPRE)
+            infoEmpleado.totalHoras = sheet.Cells(row, COL_TOTHOR)
+            dict.Add infoEmpleado.cedula, infoEmpleado
+        End If
+    End If
+    row = row + 1
+Wend
+
+workbook.Save
+workbook.Close SaveChanges:=False
+
+MsgBox "en dict " & dict.Count
+
+Call showProcessing
+    
+MsgBox "Finalizó con éxito el procesamiento de las novedades." & vbNewLine & vbNewLine & _
+    "Se procesaron " & rowsProcessed & " regisros de novedades.", vbInformation
+
+
+closeResources:
+MsgBox Err.Description
+Call closeResources
 End Sub
 
 Private Sub btnProcess_Click()
@@ -422,6 +534,10 @@ Public Sub updateHolidays()
 Me.lHolidays = ModCalendar.getHolidaysNumberForYear(ModConfig.currentYear)
 End Sub
 
+Private Sub Image2_Click()
+
+End Sub
+
 Private Sub lUpload_Click()
 excelDialog.ShowOpen
 If excelDialog.FileName <> "" Then
@@ -432,3 +548,5 @@ Else
     Me.lExcelFile = "Seleccione el archivo de novedades"
 End If
 End Sub
+
+
