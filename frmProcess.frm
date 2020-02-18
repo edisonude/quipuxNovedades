@@ -37,14 +37,12 @@ Begin VB.Form frmProcess
       Visible         =   0   'False
       Width           =   8220
    End
-   Begin VB.Line Line1 
-      BorderColor     =   &H001BE7E1&
-      BorderWidth     =   4
-      Index           =   2
-      X1              =   6720
-      X2              =   6705
-      Y1              =   1620
-      Y2              =   3990
+   Begin VB.Image iReportExtraHours 
+      Height          =   1065
+      Left            =   6840
+      Picture         =   "frmProcess.frx":9C734
+      Top             =   4200
+      Width           =   1770
    End
    Begin VB.Line Line1 
       BorderColor     =   &H001BE7E1&
@@ -61,21 +59,14 @@ Begin VB.Form frmProcess
       Index           =   0
       X1              =   240
       X2              =   9330
-      Y1              =   3990
-      Y2              =   3975
-   End
-   Begin VB.Image btnInforms 
-      Height          =   2280
-      Left            =   6720
-      Picture         =   "frmProcess.frx":9C734
-      Top             =   1755
-      Width           =   2640
+      Y1              =   3975
+      Y2              =   3960
    End
    Begin VB.Image btnEnd 
       Height          =   630
       Left            =   2550
-      Picture         =   "frmProcess.frx":B00F6
-      Top             =   5640
+      Picture         =   "frmProcess.frx":A2A32
+      Top             =   5400
       Width           =   4710
    End
    Begin VB.Label lHolidays 
@@ -93,9 +84,9 @@ Begin VB.Form frmProcess
       EndProperty
       ForeColor       =   &H001BE7E1&
       Height          =   255
-      Left            =   3195
+      Left            =   2355
       TabIndex        =   3
-      Top             =   4785
+      Top             =   4545
       Width           =   300
    End
    Begin VB.Label lYear 
@@ -113,50 +104,50 @@ Begin VB.Form frmProcess
       EndProperty
       ForeColor       =   &H001BE7E1&
       Height          =   255
-      Left            =   2955
+      Left            =   2115
       TabIndex        =   2
-      Top             =   4485
+      Top             =   4245
       Width           =   540
    End
    Begin VB.Image btnDiurnalNocturnal 
       Height          =   1065
-      Left            =   5760
-      Picture         =   "frmProcess.frx":B9C18
-      Top             =   4425
+      Left            =   4920
+      Picture         =   "frmProcess.frx":AC554
+      Top             =   4185
       Width           =   1785
    End
    Begin VB.Image btnConfigExcel 
       Height          =   1065
-      Left            =   3840
-      Picture         =   "frmProcess.frx":C0032
-      Top             =   4425
+      Left            =   3000
+      Picture         =   "frmProcess.frx":B296E
+      Top             =   4185
       Width           =   1770
    End
    Begin VB.Image btnCalendar 
       Height          =   1065
-      Left            =   1920
-      Picture         =   "frmProcess.frx":C6330
-      Top             =   4425
+      Left            =   1080
+      Picture         =   "frmProcess.frx":B8C6C
+      Top             =   4200
       Width           =   1770
    End
    Begin VB.Image Image4 
       Height          =   375
       Left            =   240
-      Picture         =   "frmProcess.frx":CC62E
+      Picture         =   "frmProcess.frx":BEF6A
       Top             =   3600
       Width           =   2340
    End
    Begin VB.Image btnProcess 
       Height          =   630
-      Left            =   1110
-      Picture         =   "frmProcess.frx":CF424
+      Left            =   2430
+      Picture         =   "frmProcess.frx":C1D60
       Top             =   2880
       Width           =   4695
    End
    Begin VB.Label lUpload 
       BackStyle       =   0  'Transparent
       Height          =   600
-      Left            =   5790
+      Left            =   7110
       TabIndex        =   1
       Top             =   1905
       Width           =   660
@@ -175,22 +166,22 @@ Begin VB.Form frmProcess
       EndProperty
       ForeColor       =   &H00808080&
       Height          =   375
-      Left            =   735
+      Left            =   2055
       TabIndex        =   0
       Top             =   2040
       Width           =   4935
    End
    Begin VB.Image Image3 
       Height          =   660
-      Left            =   615
-      Picture         =   "frmProcess.frx":D8E9E
+      Left            =   1935
+      Picture         =   "frmProcess.frx":CB7DA
       Top             =   1875
       Width           =   5865
    End
    Begin VB.Image Image1 
       Height          =   375
       Left            =   240
-      Picture         =   "frmProcess.frx":E5900
+      Picture         =   "frmProcess.frx":D823C
       Top             =   1200
       Width           =   4560
    End
@@ -245,71 +236,6 @@ End Sub
 
 Private Sub btnEnd_Click()
 End
-End Sub
-
-Private Sub btnInforms_Click()
-On Error GoTo closeResources
-
-If (Me.excelPath = "") Then
-    MsgBox "Debe seleccionar el archivo de novedades que quiere procesar", vbCritical
-    Exit Sub
-End If
-
-Call showProcessing
-Call loadExcel
-
-Dim hasMoreRows As Boolean
-Dim row As Integer
-Dim rowsProcessed As Integer
-
-hasMoreRows = True
-row = INI_ROW
-rowsProcessed = 0
-
-Dim dict As Dictionary
-Set dict = New Dictionary
-
-Dim cedula As String
-Dim he As Double
-Dim infoEmpleado As CEntryReport
-
-While hasMoreRows
-    cedula = sheet.Cells(row, COL_CEDULA)
-    If (cedula = "") Then
-        hasMoreRows = False
-    Else
-        he = sheet.Cells(row, COL_TOTHOR)
-        If dict.Exists(cedula) Then
-            Set infoEmpleado = dict.Item(cedula)
-            infoEmpleado.totalHoras = infoEmpleado.totalHoras + he
-            Set dict.Item(cedula) = infoEmpleado
-        Else
-            Set infoEmpleado = New CEntryReport
-            infoEmpleado.cedula = cedula
-            infoEmpleado.nombre = sheet.Cells(row, COL_NOMBRE)
-            infoEmpleado.cargo = sheet.Cells(row, COL_CARGO)
-            infoEmpleado.vicepresidencia = sheet.Cells(row, COL_VICEPRE)
-            infoEmpleado.totalHoras = sheet.Cells(row, COL_TOTHOR)
-            dict.Add infoEmpleado.cedula, infoEmpleado
-        End If
-    End If
-    row = row + 1
-Wend
-
-workbook.Save
-workbook.Close SaveChanges:=False
-
-MsgBox "en dict " & dict.Count
-
-Call showProcessing
-    
-MsgBox "Finalizó con éxito el procesamiento de las novedades." & vbNewLine & vbNewLine & _
-    "Se procesaron " & rowsProcessed & " regisros de novedades.", vbInformation
-
-
-closeResources:
-MsgBox Err.Description
-Call closeResources
 End Sub
 
 Private Sub btnProcess_Click()
@@ -536,6 +462,11 @@ End Sub
 
 Private Sub Image2_Click()
 
+End Sub
+
+Private Sub iReportExtraHours_Click()
+frmReportExtraHours.Show
+Unload Me
 End Sub
 
 Private Sub lUpload_Click()

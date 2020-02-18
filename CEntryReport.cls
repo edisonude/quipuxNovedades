@@ -6,15 +6,19 @@ BEGIN
   DataSourceBehavior  = 0  'vbNone
   MTSTransactionMode  = 0  'NotAnMTSObject
 END
-Attribute VB_Name = "CEntryReport"
+Attribute VB_Name = "CEntryReportHe"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
-   Public cedula As String
-   Public nombre As String
-   Public cargo As String
-   Public vicepresidencia As String
-   Public fecha As Date
-   Public totalHoras As Double
+    Public leaderId As String
+    Public leaderName As String
+    Public leaderCell As String
+    Public id As String
+    Public name As String
+    Public charge As String
+    Public cell As String
+    Public dateHe As Date
+    Public hours As Double
+    Public hoursExceed As Double

@@ -1,9 +1,10 @@
-frmCalendar = 0, 0, 0, 0, C, 0, 0, 0, 0, C
-ModIni = 0, 0, 0, 0, C
-frmProcess = 156, 156, 1043, 598, Z, 78, 78, 965, 520, C
+frmCalendar = 0, 0, 0, 0, C, 156, 156, 1043, 598, C
+ModIni = 104, 104, 991, 546, C
+frmProcess = 156, 156, 1043, 598, C, 78, 78, 965, 520, C
 ModCalendar = 0, 0, 0, 0, C
-ModExcel = 182, 182, 1069, 624, 
+ModExcel = 182, 182, 1069, 624, C
 frmConfigExcel = 0, 0, 0, 0, C, 26, 26, 913, 468, C
 ModConfig = 182, 182, 1069, 624, C
 frmDiurnalNocturnal = 0, 0, 0, 0, C, 52, 52, 939, 494, C
-CEntryReport = 26, 26, 913, 468, 
+CEntryReportHe = 26, 26, 913, 468, C
+frmReportExtraHours = 182, 182, 1069, 624, Z, 156, 156, 1043, 598, C

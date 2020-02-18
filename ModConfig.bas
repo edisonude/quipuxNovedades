@@ -21,6 +21,7 @@ Public COL_RF As Integer
 Public HOUR_START_D As String
 Public HOUR_END_D As String
 
+
 Sub main()
 calendarPath = App.Path & "\config.ini"
 currentYear = year(Now)
@@ -29,6 +30,8 @@ Call loadExcelConfig
 
 HOUR_START_D = ModIni.readPropertyFile(calendarPath, ModIni.K_HOUR_START_D, "06:00:00")
 HOUR_END_D = ModIni.readPropertyFile(calendarPath, ModIni.K_HOUR_END_D, "21:00:00")
+
+'excelCols = Array("", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "AB", "AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN")
 frmProcess.Show
 End Sub
 
@@ -53,4 +56,18 @@ COL_HENF = ModIni.readPropertyFile(calendarPath, ModIni.K_COL_HENF, 13)
 COL_RN = ModIni.readPropertyFile(calendarPath, ModIni.K_COL_RN, 14)
 COL_RNF = ModIni.readPropertyFile(calendarPath, ModIni.K_COL_RNF, 15)
 COL_RF = ModIni.readPropertyFile(calendarPath, ModIni.K_COL_RF, 16)
+End Function
+
+Public Function convertExcelColToInt(col As String) As Integer
+
+Dim cols As Variant
+Dim i As Integer
+cols = Array("", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "AA", "AB", "AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN")
+For i = 0 To UBound(cols)
+    If (cols(i) = col) Then
+        convertExcelColToInt = i
+        Exit Function
+    End If
+Next
+convertExcelColToInt = -1
 End Function
