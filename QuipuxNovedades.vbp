@@ -13,10 +13,15 @@ Module=ModExcel; ModExcel.bas
 Form=frmConfigExcel.frm
 Module=ModConfig; ModConfig.bas
 Form=frmDiurnalNoctural.frm
+<<<<<<< HEAD
 Class=CEntryReportHe; CEntryReport.cls
 Form=frmReportExtraHours.frm
+=======
+IconForm="frmProcess"
+>>>>>>> 73ca9a6a06ba956f5a1698b084774ae292eec038
 Startup="Sub Main"
 HelpFile=""
+Title="QuipuxNovedades"
 ExeName32="QuipuxNovedades.exe"
 Command32=""
 Name="Proyecto1"
