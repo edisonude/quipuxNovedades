@@ -7,4 +7,4 @@ frmConfigExcel = 0, 0, 0, 0, C, 26, 26, 913, 468, C
 ModConfig = 182, 182, 1069, 624, C
 frmDiurnalNocturnal = 0, 0, 0, 0, C, 52, 52, 939, 494, C
 CEntryReportHe = 26, 26, 913, 468, C
-frmReportExtraHours = 182, 182, 1069, 624, Z, 156, 156, 1043, 598, C
+frmReportExtraHours = 182, 182, 1069, 624, C, 156, 156, 1043, 598, C
